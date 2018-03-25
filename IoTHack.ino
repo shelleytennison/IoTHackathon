@@ -5,29 +5,28 @@
  */
 
  
-
-#include &lt;ESP8266WiFi.h&gt;
+#include <ESP8266WiFi.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include "Adafruit_LEDBackpack.h"
 
 Adafruit_8x16minimatrix matrix = Adafruit_8x16minimatrix();
 
-const char* ssid     = &quot;Puppet Guest&quot;;
+const char* ssid     = "Puppet Guest";
 
-const char* password = &quot;argon4949&quot;;
+const char* password = "argon4949";
 
  
 
-const char* host = &quot;wifitest.adafruit.com&quot;;
+const char* host = "wifitest.adafruit.com";
 
-String URI = &quot;hackathonweb.php&quot;;
+String URI = "hackathonweb.php";
 
-String server = &quot;https://motionsensorsurvey.000webhostapp.com&quot;;
+String server = "https://motionsensorsurvey.000webhostapp.com";
 
-String data = &quot;motiondata=100&quot;;
+String data = "motiondata=100";
 
-const char* motion_count = &quot;0&quot;;
+const char* motion_count = "0";
 
 int ledPin = 12; // the pin for the LED 
 int inputPin = 12; // th input pin for the PIR sensor
@@ -55,7 +54,7 @@ void setup() {
 
   Serial.println();
 
-  Serial.print(&quot;Connecting to &quot;);
+  Serial.print("Connecting to ");
 
   Serial.println(ssid);
 
@@ -69,17 +68,17 @@ void setup() {
 
     delay(500);
 
-    Serial.print(&quot;.&quot;);
+    Serial.print(".");
 
   }
 
  
 
-  Serial.println(&quot;&quot;);
+  Serial.println("");
 
-  Serial.println(&quot;WiFi connected&quot;);  
+  Serial.println("WiFi connected");  
 
-  Serial.println(&quot;IP address: &quot;);
+  Serial.println("IP address: ");
 
   Serial.println(WiFi.localIP());
 
@@ -124,7 +123,7 @@ void loop() {
 }
  
 
-  Serial.print(&quot;connecting to &quot;);
+  Serial.print("connecting to ");
 
   Serial.println(host);
 
@@ -138,7 +137,7 @@ void loop() {
 
   if (!client.connect(host, httpPort)) {
 
-    Serial.println(&quot;connection failed&quot;);
+    Serial.println("connection failed");
 
     return;
 
@@ -148,9 +147,9 @@ void loop() {
 
   // We now create a URI for the request
 
-  String url = &quot;/testwifi/index.html&quot;;
+  String url = "/testwifi/index.html";
 
-  Serial.print(&quot;Requesting URL: &quot;);
+  Serial.print("Requesting URL: ");
 
   Serial.println(url);
 
@@ -158,39 +157,39 @@ void loop() {
 
   // This will send the request to the server
 
-  client.print(String(&quot;GET &quot;) + url + &quot; HTTP/1.1\r\n&quot; +
+  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
 
-               &quot;Host: &quot; + host + &quot;\r\n&quot; + 
+               "Host: " + host + "\r\n" + 
 
-               &quot;Connection: close\r\n\r\n&quot;);
+               "Connection: close\r\n\r\n");
 
   delay(500);
 
-  motion_count = &quot;100&quot;;
+  motion_count = "100";
 
   client.print(
 
-    String(&quot;POST &quot;) + URI + &quot; HTTP/1.0\r\n&quot; +
+    String("POST ") + URI + " HTTP/1.0\r\n" +
 
   
 
-    &quot;Host: &quot; + server + &quot;\r\n&quot; +
+    "Host: " + server + "\r\n" +
 
   
 
-    &quot;Accept: *&quot; + &quot;/&quot; + &quot;*\r\n&quot; +
+    "Accept: *" + "/" + "*\r\n" +
 
   
 
-    &quot;Content-Length: &quot; + data.length() + &quot;\r\n&quot; +
+    "Content-Length: " + data.length() + "\r\n" +
 
   
 
-    &quot;Content-Type: application/x-www-form-urlencoded\r\n&quot; +
+    "Content-Type: application/x-www-form-urlencoded\r\n" +
 
   
 
-    &quot;\r\n&quot; + data);
+    "\r\n" + data);
 
 delay(1000);
 
@@ -200,7 +199,7 @@ delay(1000);
 
   while(client.available()){
 
-    String line = client.readStringUntil(&#39;\r&#39;);
+    String line = client.readStringUntil('\r');
 
     Serial.print(line);
 
@@ -210,8 +209,7 @@ delay(1000);
 
   Serial.println();
 
-  Serial.println(&quot;closing connection&quot;);
+  Serial.println("closing connection");
 
 }
-
 
