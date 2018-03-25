@@ -22,16 +22,18 @@
 
 Adafruit_8x16minimatrix matrix = Adafruit_8x16minimatrix();
 
-int inputPin = 12; // th input pin for the PIR sensor
+int inputPin = 12; // the input pin for the PIR sensor
 int counter = 0;
 int currentState = 0;
-int previousState = 0;
+int previousState = 0;  
+int pirState = LOW;     // we start assuming no motion has been detected.
+int val = 0; //   variable for reading the pin state
 
 void setup() {
   matrix.begin(0x70); 
   matrix.clear();
+  pinMode(inputPin, INPUT);   // declare sensor as input
   Serial.begin(9600);
-  pinMode(inputPin, INPUT); // declare the motion sensor data as input.
   delay(100);
 
 }
@@ -39,25 +41,30 @@ void setup() {
 
 void loop() {
 
-  delay(1000);
-
-  int currentState = digitalRead(inputPin);
-    if ( currentState != previousState){
+  delay(100);
+  currentState = digitalRead(inputPin);
+    if ( currentState != previousState) {
+      pirState = LOW;}
 
   //motion has been detected
-  for (int i = 0; 1 < currentState; i++)
-      counter = counter+1;
-      Serial.println("16x8 LED Mini Matrix Test");
-    }
 
+   else { 
+      for (int i = 0; < currentState; i++)
+      counter = counter+1;
+      Serial.println(counter);
+      pirState = HIGH;
+    }
+    
+    else {
+      if (pirState == HIGH){
+   
     previousState = currentState;
     delay(0);
     matrix.drawPixel(0, 0, LED_ON);
+    pirState = LOW;
+      }
 
 
-    for (int counter = 0; counter<=1000; counter++);{
-    Serial.println(counter);
-    }
 
 {
   matrix.clear();
@@ -70,12 +77,13 @@ void loop() {
     matrix.clear();
     matrix.setCursor(x,0);
     matrix.writeDisplay();
-    matrix.print(currentState);
+    matrix.print(counter);
     matrix.writeDisplay();
     delay(100);
 }
 }
 }
-
+}
+}
 
 
