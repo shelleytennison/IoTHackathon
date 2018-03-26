@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>chart created with amCharts | amCharts</title>
+		<meta name="description" content="chart created using amCharts live editor" />
+		
+		<!-- amCharts javascript sources -->
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/black.js"></script>
+		
+
+		<!-- amCharts javascript code -->
+		<script type="text/javascript">
+			AmCharts.makeChart("chartdiv",
+				{
+					"type": "serial",
+					"categoryField": "date",
+					"dataDateFormat": "YYYY-MM-DD HH",
+					"theme": "black",
+					"categoryAxis": {
+						"minPeriod": "hh",
+						"parseDates": true
+					},
+					"chartCursor": {
+						"enabled": true,
+						"categoryBalloonDateFormat": "JJ:NN"
+					},
+					"chartScrollbar": {
+						"enabled": true
+					},
+					"trendLines": [],
+					"graphs": [
+						{
+							"bullet": "round",
+							"id": "AmGraph-1",
+							"title": "Sensor 1",
+							"valueField": "Sensor1"
+						},
+						{
+							"bullet": "square",
+							"id": "AmGraph-2",
+							"title": "Sensor 2",
+							"valueField": "Sensor2"
+						}
+					],
+					"guides": [],
+					"valueAxes": [
+						{
+							"id": "ValueAxis-1",
+							"title": "Motion Count(in K)"
+						}
+					],
+					"allLabels": [],
+					"balloon": {},
+					"legend": {
+						"enabled": true,
+						"useGraphSettings": true
+					},
+					"titles": [
+						{
+							"id": "Title-1",
+							"size": 15,
+							"text": "Daily Trend of Motion Sensors"
+						}
+					],
+					"dataProvider": [
+						{
+							"date": "2014-03-01 08",
+							"Sensor1": 8,
+							"Sensor2": 5
+						},
+						{
+							"date": "2014-03-01 09",
+							"Sensor1": "0",
+							"Sensor2": 7
+						},
+						{
+							"date": "2014-03-01 10",
+							"Sensor1": 2,
+							"Sensor2": "7"
+						},
+						{
+							"date": "2014-03-01 11",
+							"Sensor1": 1,
+							"Sensor2": "8"
+						},
+						{
+							"date": "2014-03-01 12",
+							"Sensor1": 2,
+							"Sensor2": "12"
+						},
+						{
+							"date": "2014-03-01 13",
+							"Sensor1": "2",
+							"Sensor2": "10"
+						},
+						{
+							"date": "2014-03-01 14",
+							"Sensor1": "4",
+							"Sensor2": 8
+						}
+					]
+				}
+			);
+		</script>
+	</head>
+	<body>
+		<div id="chartdiv" style="width: 100%; height: 400px; background-color: #222222;" ></div>
+	</body>
+</html>
