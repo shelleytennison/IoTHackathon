@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>chart created with amCharts | amCharts</title>
+		<meta name="description" content="chart created using amCharts live editor" />
+		
+		<!-- amCharts javascript sources -->
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/black.js"></script>
+		
+
+		<!-- amCharts javascript code -->
+		<script type="text/javascript">
+			AmCharts.makeChart("chartdiv",
+				{
+					"type": "serial",
+					"categoryField": "date",
+					"dataDateFormat": "YYYY-MM",
+					"theme": "black",
+					"categoryAxis": {
+						"minPeriod": "MM",
+						"parseDates": true
+					},
+					"chartCursor": {
+						"enabled": true,
+						"categoryBalloonDateFormat": "MMM YYYY"
+					},
+					"chartScrollbar": {
+						"enabled": true
+					},
+					"trendLines": [],
+					"graphs": [
+						{
+							"bullet": "round",
+							"id": "AmGraph-1",
+							"title": "Oregon Zoo",
+							"valueField": "column-1"
+						},
+						{
+							"bullet": "square",
+							"id": "AmGraph-2",
+							"title": "Pioneer Courthouse Square",
+							"valueField": "column-2"
+						}
+					],
+					"guides": [],
+					"valueAxes": [
+						{
+							"id": "ValueAxis-1",
+							"title": "Motion Count (in 10K)"
+						}
+					],
+					"allLabels": [],
+					"balloon": {},
+					"legend": {
+						"enabled": true,
+						"useGraphSettings": true
+					},
+					"titles": [
+						{
+							"id": "Title-1",
+							"size": 15,
+							"text": "Monthly Trend of Sensors"
+						}
+					],
+					"dataProvider": [
+						{
+							"date": "2018-01",
+							"column-1": "1",
+							"column-2": "2"
+						},
+						{
+							"date": "2018-02",
+							"column-1": "2",
+							"column-2": "1"
+						},
+						{
+							"date": "2018-03",
+							"column-1": "2",
+							"column-2": 3
+						},
+						{
+							"date": "2018-04",
+							"column-1": 1,
+							"column-2": "2"
+						},
+						{
+							"date": "2018-05",
+							"column-1": "5",
+							"column-2": "7"
+						},
+						{
+							"date": "2018-06",
+							"column-1": "6",
+							"column-2": "9"
+						},
+						{
+							"date": "2018-07",
+							"column-1": "9",
+							"column-2": 8
+						}
+					]
+				}
+			);
+		</script>
+	</head>
+	<body>
+		<div id="chartdiv" style="width: 100%; height: 400px; background-color: #222222;" ></div>
+	</body>
+</html>
